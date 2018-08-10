@@ -6,7 +6,7 @@
 #
 Name     : ironic
 Version  : 11.1.0
-Release  : 1
+Release  : 2
 URL      : https://tarballs.openstack.org/ironic/ironic-11.1.0.tar.gz
 Source0  : https://tarballs.openstack.org/ironic/ironic-11.1.0.tar.gz
 Source99 : https://tarballs.openstack.org/ironic/ironic-11.1.0.tar.gz.asc
@@ -27,6 +27,7 @@ Requires: alembic
 Requires: automaton
 Requires: eventlet
 Requires: futurist
+Requires: ironic-lib
 Requires: jsonpatch
 Requires: jsonschema
 Requires: keystoneauth1
@@ -53,6 +54,7 @@ Requires: osprofiler
 Requires: pbr
 Requires: pecan
 Requires: psutil
+Requires: pysendfile
 Requires: python-cinderclient
 Requires: python-glanceclient
 Requires: python-mock
@@ -135,7 +137,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533875689
+export SOURCE_DATE_EPOCH=1533908468
 python3 setup.py build -b py3
 
 %check

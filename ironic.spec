@@ -6,18 +6,18 @@
 #
 Name     : ironic
 Version  : 11.1.0
-Release  : 2
+Release  : 3
 URL      : https://tarballs.openstack.org/ironic/ironic-11.1.0.tar.gz
 Source0  : https://tarballs.openstack.org/ironic/ironic-11.1.0.tar.gz
 Source99 : https://tarballs.openstack.org/ironic/ironic-11.1.0.tar.gz.asc
 Summary  : OpenStack Bare Metal Provisioning
 Group    : Development/Tools
 License  : Apache-2.0
-Requires: ironic-bin
-Requires: ironic-config
-Requires: ironic-python3
-Requires: ironic-license
-Requires: ironic-python
+Requires: ironic-bin = %{version}-%{release}
+Requires: ironic-config = %{version}-%{release}
+Requires: ironic-license = %{version}-%{release}
+Requires: ironic-python = %{version}-%{release}
+Requires: ironic-python3 = %{version}-%{release}
 Requires: Jinja2
 Requires: SQLAlchemy
 Requires: Sphinx
@@ -66,6 +66,7 @@ Requires: requests
 Requires: retrying
 Requires: rfc3986
 Requires: six
+Requires: sphinxcontrib-apidoc
 Requires: stevedore
 Requires: tooz
 BuildRequires : WSME
@@ -88,8 +89,8 @@ Team and repository tags
 %package bin
 Summary: bin components for the ironic package.
 Group: Binaries
-Requires: ironic-config
-Requires: ironic-license
+Requires: ironic-config = %{version}-%{release}
+Requires: ironic-license = %{version}-%{release}
 
 %description bin
 bin components for the ironic package.
@@ -114,7 +115,7 @@ license components for the ironic package.
 %package python
 Summary: python components for the ironic package.
 Group: Default
-Requires: ironic-python3
+Requires: ironic-python3 = %{version}-%{release}
 
 %description python
 python components for the ironic package.
@@ -137,8 +138,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533908468
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1541266907
+python3 setup.py build
 
 %check
 export http_proxy=http://127.0.0.1:9/
@@ -147,9 +148,9 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/ironic
-cp LICENSE %{buildroot}/usr/share/doc/ironic/LICENSE
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/ironic
+cp LICENSE %{buildroot}/usr/share/package-licenses/ironic/LICENSE
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -173,8 +174,8 @@ echo ----[ mark ]----
 %config /usr/etc/ironic/rootwrap.d/ironic-utils.filters
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/ironic/LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/ironic/LICENSE
 
 %files python
 %defattr(-,root,root,-)

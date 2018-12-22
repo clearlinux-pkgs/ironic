@@ -1,18 +1,161 @@
 CHANGES
 =======
 
+12.0.0
+------
+
+* Introduce configuration option [ipmi]ipmi\_disable\_timeout
+* Enroll XClarity machines in Ironic's devstack setting
+* spelling error
+* api-ref: update node.resource\_class description
+* Add a note regarding IPA multidevice fix
+* Allow disabling instance image cache
+* Add a prelude for ironic 12.0
+* Set proper version numbering
+* Change multinode jobs to default to local boot
+* Follow-up Retries and timeout for IPA command
+* Fix "import xxx as xxx" grammar
+* Kill misbehaving \`ipmitool\` process
+* Fix OOB introspection to use pxe\_enabled flag in idrac driver
+* Add configurable Redfish client authentication
+* Expose conductors: api
+* Fix node exclusive lock not released on console start/restart
+* Fix IPv6 Option Passing
+* Let neutron regenerate mac on port unbind
+* Slim down grenade jobs
+* Extend job build timeout
+* Mark several tests to not test cleaning
+* Add BIOS interface to Redfish hardware type
+* Avoid cpu\_arch None values in iscsi deployments
+* Expose conductors: db and rpc
+* Fix Chinese quotes
+* Add ipmi\_disable\_timeout to avoid problematic IPMI command
+* Correct author email address
+* Ensure we unbind flat network ports and clear BM mac addresses
+* Retries and timeout for IPA command
+* Support for protecting nodes from undeploying and rebuilding
+* Add download link apache configuration with mod\_wsgi
+* spelling error
+* Add Redfish inspect interface follow up
+* Add the noop management interface to the manual-management hardware type
+* Add missing ws separator between words
+* Switch ironic-tempest-...-tinyipa-multinode to zuulv3
+* Add a non-voting bifrost job to ironic
+* Increase RAM for the ironic node in UEFI job
+* Reuse Redfish sessions follow up
+* Improve logs when hard linking images fails
+* Don't fail when node is in CLEANFAIL state
+* Fix ipv6 URL formatting for pxe/iPXE
+* Fix redfish test\_get\_system\_resource\_not\_found test
+* Improve sushy mocks
+* Recommend to set boot mode explicitly
+* Add Redfish inspect interface
+* Fix CPU count returned by introspection in Ironic iDRAC driver
+* Add ironic-status upgrade check command framework
+* Passing thread pool size to IPA for parallel erasure
+* Change BFV job to use ipxe interface
+* [devstack] Allow setting TFTP max blocksize
+* Reuse Redfish sessions
+* Migration step to update objects to latest version
+* Cleanup of remaining pxe focused is\_ipxe\_enabled
+* Remove the xclarity deprecation
+* Follow-up to fix not exist deploy image of patch 592247
+* Remove pywsman reference
+* Fix DHCPv6 support
+* Revert "Add openstack/placement as a required project for ironic-grenade\*"
+* Add api-ref for conductor group
+* Fix ironic developer quickstart document
+* Add note to pxe configuration doc
+* Create base pxe class
+* Wrap up PXE private method to pxe\_utils move
+* Enhanced checksum support
+* Enable configuration of conversion flags for iscsi
+* Document how to implement a new deploy step
+* Refactor API code for checking microversions
+* Allow streaming raw partition images
+* Remove Vagrant
+* ipxe boot interface
+* Remove oneview drivers
+* Completely remove support for deprecated Glance V1
+* Avoid race with nova on power sync and rescue
+* Doc: Adds cinder as a service requires creds
+* Fix unit test run on OS X
+* Fixes a race condition in the hash ring code
+* Add automated\_clean field to the API
+* Stop console at tearing down without unsetting console\_enabled
+* Add functionality for individual cleaning on nodes
+* Documentation for 'ramdisk' deploy with 'ilo-virtual-media' boot
+* Add documentation for soft power for ilo hardware type
+* Add documentation for 'inject nmi' for ilo hardware type
+* Remove unnecessary checks in periodic task methods
+* Remove token expiration
+* Adds support for soft power operations to 'ilo' power interface
+* Add openstack/placement as a required project for ironic-grenade\*
+* Remove tox checkconfig
+* Add admin documentation for rescue mode in iLO driver
+* Correct headings in README.rst
+* Minor fixes for docs on changing hardware types
+* Add admin documentation for rescue interface
+* pxe/ipxe: Move common calls out pxe.py
+* Switch ironic-tempest-dsvm-functional-python3 to zuulv3
+* Switch ironic-tempest-dsvm-functional-python2 to zuulv3
+* Switch grenade nic driver to e1000
+* Remove ironic experimental jobs
+* Restore the nova-api redirect
+* Update docs to portgroup with creating windows images
+* Use templates for cover and lower-constraints
+* Remove wrong install-guide-jobs in zuul setup
+* Fix grenade tests
+* Add a more detailed release note for Dell BOSS RAID1 fix
+* Honors return value from BIOS interface cleansteps
+* Reuse checksum calculation from oslo
+* Adds support for 'ramdisk' deploy with 'ilo-virtual-media' boot
+* Remove inspecting state support from inspect\_hardware
+* Adds support for 'Inject NMI' to 'ilo' management interface
+* Docs for agent http provisioning
+* Ensure pagination marker is always set
+* Direct deploy serve HTTP images from conductor
+* Fix doc builds for ironic
+* Fix async keyword for Python 3.7
+* Add vendor step placement suggestion
+* Prevent HTML from appearing in API error messages
+* Replace assertRaisesRegexp with assertRaisesRegex
+* Add version discovery information to the /v1 endpoint
+* Replace assertRaisesRegexp with assertRaisesRegex
+* Fix provisioning failure with \`ramdisk\` deploy interface
+* Minor fixes to contributor vision
+* Add automated\_clean field
+* Use HostAddressOpt for opts that accept IP and hostnames
+* Remove the duplicated word
+* add python 3.6 unit test job
+* switch documentation job to new PTI
+* import zuul job settings from project-config
+* Prevents deletion of ports for active nodes
+* Disable periodic tasks if interval set to 0
+* Reformat instructions related with various OS
+* Imported Translations from Zanata
+* Add conductor\_group docs
+* Switch ironic-tempest-dsvm-ironic-inspector too zuulv3
+* Switch ironic-tempest-dsvm-bfv too zuulv3
+* A minor update to documentation of \`ilo\` hardware type
+* Imported Translations from Zanata
+* Update reno for stable/rocky
+* Fix not exist deploy image within irmc-virtual-media booting
+
 11.1.0
 ------
 
 * Switch the "snmp" hardware type to "noop" management
 * Add "noop" management and use it in the "ipmi" hardware type
 * Update docs on ironic boot mode management
+* Follow-up to always link MAC address files
 * Simplify subclasses for PXERamdiskDeploy
 * Node gets stuck in ING state when conductor goes down
 * Add notes on Redfish boot mode management
 * Prepare for Rocky release
 * Update the reno for the reset\_interfaces feature
 * Use max version of an object
+* A vision
 * Improve the "Ironic behind mod wsgi" documentation
 * Deploy steps documentation
 * Mark the ZeroMQ driver deprecated
@@ -58,6 +201,7 @@ CHANGES
 * Replace port 35357 with 5000 for "auth\_url"
 * Add conductor\_group field to config, node and conductor objects
 * Add reset\_interfaces parameter to node's PATCH
+* Don't handle warnings as errors
 * Follow up Add CUSTOM\_CPU\_FPGA Traits value to ironic inspection
 * Follow-up changes to iRMC bios interface
 * Minor changes for deploy\_steps framework
@@ -204,6 +348,7 @@ CHANGES
 * Mark xclarity password as secret
 * Fix E501 errors
 * Fix tenant DeprecationWarning from oslo\_context
+* update "auth\_url" in documents
 * Fix tenant DeprecationWarning from oslo\_context
 * Tear down console during unprovisioning
 * Fix XClarity parameters discrepancy

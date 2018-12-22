@@ -1,5 +1,5 @@
 PKG_NAME := ironic
-URL = 
+URL = https://tarballs.openstack.org/ironic/ironic-12.0.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common

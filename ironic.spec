@@ -6,7 +6,7 @@
 #
 Name     : ironic
 Version  : 12.0.0
-Release  : 4
+Release  : 5
 URL      : https://tarballs.openstack.org/ironic/ironic-12.0.0.tar.gz
 Source0  : https://tarballs.openstack.org/ironic/ironic-12.0.0.tar.gz
 Source99 : https://tarballs.openstack.org/ironic/ironic-12.0.0.tar.gz.asc
@@ -48,6 +48,7 @@ Requires: oslo.reports
 Requires: oslo.rootwrap
 Requires: oslo.serialization
 Requires: oslo.service
+Requires: oslo.upgradecheck
 Requires: oslo.utils
 Requires: oslo.versionedobjects
 Requires: osprofiler
@@ -69,12 +70,15 @@ Requires: six
 Requires: sphinxcontrib-apidoc
 Requires: stevedore
 Requires: tooz
+BuildRequires : WSME
 BuildRequires : buildreq-distutils3
+BuildRequires : keystonemiddleware
 BuildRequires : oslo.versionedobjects
 BuildRequires : pbr
 BuildRequires : pluggy
 BuildRequires : py-python
 BuildRequires : pytest
+BuildRequires : retrying
 BuildRequires : tooz
 BuildRequires : tox
 BuildRequires : virtualenv
@@ -138,7 +142,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1545509035
+export SOURCE_DATE_EPOCH=1545578523
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 

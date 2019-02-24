@@ -6,7 +6,7 @@
 #
 Name     : ironic
 Version  : 12.0.0
-Release  : 8
+Release  : 9
 URL      : https://tarballs.openstack.org/ironic/ironic-12.0.0.tar.gz
 Source0  : https://tarballs.openstack.org/ironic/ironic-12.0.0.tar.gz
 Source99 : https://tarballs.openstack.org/ironic/ironic-12.0.0.tar.gz.asc
@@ -20,7 +20,6 @@ Requires: ironic-python = %{version}-%{release}
 Requires: ironic-python3 = %{version}-%{release}
 Requires: Jinja2
 Requires: SQLAlchemy
-Requires: Sphinx
 Requires: WSME
 Requires: WebOb
 Requires: alembic
@@ -32,8 +31,6 @@ Requires: jsonpatch
 Requires: jsonschema
 Requires: keystoneauth1
 Requires: keystonemiddleware
-Requires: openstackdocstheme
-Requires: os-api-ref
 Requires: os-traits
 Requires: oslo.concurrency
 Requires: oslo.config
@@ -58,37 +55,51 @@ Requires: psutil
 Requires: pysendfile
 Requires: python-cinderclient
 Requires: python-glanceclient
-Requires: python-mock
 Requires: python-neutronclient
 Requires: python-swiftclient
 Requires: pytz
-Requires: reno
 Requires: requests
 Requires: retrying
 Requires: rfc3986
 Requires: six
-Requires: sphinxcontrib-apidoc
 Requires: stevedore
 Requires: tooz
 BuildRequires : WSME
+BuildRequires : alembic-python
+BuildRequires : automaton-python
 BuildRequires : buildreq-distutils3
+BuildRequires : ironic-lib-python
+BuildRequires : jsonpatch-python
+BuildRequires : jsonpointer-python
 BuildRequires : keystonemiddleware
+BuildRequires : os-traits-python
+BuildRequires : oslo.db-python
+BuildRequires : oslo.policy-python
+BuildRequires : oslo.reports-python
+BuildRequires : oslo.rootwrap-python
+BuildRequires : oslo.upgradecheck-python
 BuildRequires : oslo.versionedobjects
+BuildRequires : osprofiler-python
 BuildRequires : pbr
 BuildRequires : pluggy
+BuildRequires : prettytable
+BuildRequires : psutil-python
 BuildRequires : py-python
+BuildRequires : pysendfile-python
 BuildRequires : pytest
+BuildRequires : python-cinderclient-python
+BuildRequires : python-glanceclient-python
+BuildRequires : python-neutronclient-python
+BuildRequires : python-swiftclient-python
 BuildRequires : retrying
+BuildRequires : sqlalchemy-migrate-python
 BuildRequires : tooz
 BuildRequires : tox
 BuildRequires : virtualenv
+BuildRequires : warlock-python
 
 %description
-Ironic
-        ======
-        
-        Team and repository tags
-        ------------------------
+Please see https://alembic.readthedocs.org/en/latest/index.html for general documentation
 
 %package bin
 Summary: bin components for the ironic package.
@@ -142,7 +153,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1545578523
+export SOURCE_DATE_EPOCH=1551033957
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 

@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x1A541148054E9E38 (infra-root@openstack.org)
 #
 Name     : ironic
-Version  : 12.0.0
-Release  : 10
-URL      : https://tarballs.openstack.org/ironic/ironic-12.0.0.tar.gz
-Source0  : https://tarballs.openstack.org/ironic/ironic-12.0.0.tar.gz
-Source99 : https://tarballs.openstack.org/ironic/ironic-12.0.0.tar.gz.asc
+Version  : 12.1.0
+Release  : 11
+URL      : https://tarballs.openstack.org/ironic/ironic-12.1.0.tar.gz
+Source0  : https://tarballs.openstack.org/ironic/ironic-12.1.0.tar.gz
+Source99 : https://tarballs.openstack.org/ironic/ironic-12.1.0.tar.gz.asc
 Summary  : OpenStack Bare Metal Provisioning
 Group    : Development/Tools
 License  : Apache-2.0
@@ -31,6 +31,7 @@ Requires: jsonpatch
 Requires: jsonschema
 Requires: keystoneauth1
 Requires: keystonemiddleware
+Requires: openstacksdk
 Requires: os-traits
 Requires: oslo.concurrency
 Requires: oslo.config
@@ -65,13 +66,14 @@ Requires: six
 Requires: stevedore
 Requires: tooz
 BuildRequires : WSME
-BuildRequires : alembic-python
+BuildRequires : WSME-python
 BuildRequires : automaton-python
 BuildRequires : buildreq-distutils3
 BuildRequires : ironic-lib-python
+BuildRequires : jsonpatch
 BuildRequires : jsonpatch-python
-BuildRequires : jsonpointer-python
 BuildRequires : keystonemiddleware
+BuildRequires : openstacksdk-python
 BuildRequires : os-traits-python
 BuildRequires : oslo.db-python
 BuildRequires : oslo.policy-python
@@ -79,10 +81,10 @@ BuildRequires : oslo.reports-python
 BuildRequires : oslo.rootwrap-python
 BuildRequires : oslo.upgradecheck-python
 BuildRequires : oslo.versionedobjects
+BuildRequires : osprofiler
 BuildRequires : osprofiler-python
 BuildRequires : pbr
 BuildRequires : pluggy
-BuildRequires : prettytable
 BuildRequires : psutil-python
 BuildRequires : py-python
 BuildRequires : pysendfile-python
@@ -92,11 +94,11 @@ BuildRequires : python-glanceclient-python
 BuildRequires : python-neutronclient-python
 BuildRequires : python-swiftclient-python
 BuildRequires : retrying
-BuildRequires : sqlalchemy-migrate-python
+BuildRequires : retrying-python
 BuildRequires : tooz
+BuildRequires : tooz-python
 BuildRequires : tox
 BuildRequires : virtualenv
-BuildRequires : warlock-python
 
 %description
 Please see https://alembic.readthedocs.org/en/latest/index.html for general documentation
@@ -146,14 +148,14 @@ python3 components for the ironic package.
 
 
 %prep
-%setup -q -n ironic-12.0.0
+%setup -q -n ironic-12.1.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551033957
+export SOURCE_DATE_EPOCH=1555949059
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -163,6 +165,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ironic
 cp LICENSE %{buildroot}/usr/share/package-licenses/ironic/LICENSE

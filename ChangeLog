@@ -1,9 +1,154 @@
 CHANGES
 =======
 
+12.1.0
+------
+
+* Add systemd unit for vbmcd in devstack
+* Workaround for postgres job with ubuntu bionic
+* Add release note on conntrack issue on bionic
+* Update release-mappings and api version data for Stein release
+* Pass kwargs to exception to get better formatted error message
+* Advance python-dracclient version requirement
+* Add prelude and update release notes for 12.1.0
+* Optimize: HUAWEI iBMC driver utils
+* Set boot\_mode in node properties during OOB Introspection
+* Fix idrac driver unit test backwards compat issue
+* Deploy Templates: factor out ironic.conductor.steps
+* Make metrics usable
+* Kg key for IPMIv2 authentication
+* fast tracked deployment support
+* Update doc for UEFI first
+* Fix lower-constraints job
+* Fix idrac Job.state renamed to Job.status
+* Deprecates \`hash\_distribution\_replicas\` config option
+* Add Huawei iBMC driver support
+* Fix misuse of assertTrue
+* Allow methods to be both deploy and clean steps
+* Adding ansible python interpreter as driver\_info
+* Return 405 for old versions in allocation and deploy template APIs
+* honor ipmi\_port in serial console drivers
+* Follow up to available node protection
+* Deploy templates: conductor and API nits
+* Deploy Templates: documentation
+* Fixing a bash test in devstack ironic lib
+* Deploy Templates: API reference
+* Fix formatting issue in doc
+* Update dist filter for devstack ubuntu
+* Add a non-voting metalsmith job for local boot coverage
+* Document building configdrive on the server side
+* Check microversions before validations for allocations and deploy templates
+* Add python3 unit test with drivers installed
+* Fix missing print format error
+* Fix typo and docstring in pxe/ipxe
+* Stop requiring root\_gb for whole-disk images
+* driver-requirements: mark UcsSdk as Python 2 only
+* Set boot\_mode in node properties during Redfish introspection
+* Add option to set python interpreter for ansible
+* Document using a URL for image\_checksum
+* [docs] IPv6 support for iLO
+* Temporary marking ironic-standalone non-voting
+* Allow building configdrive from JSON in the API
+* Allocation API: optimize check on candidate nodes
+* Fix TypeError: \_\_str\_\_ returned non-string (type ImageRefValidationFailed)
+* Deploy templates: API & notifications
+* Deploy templates: conductor
+* Drop installing python-libvirt system package
+* Test API max version is in RELEASE\_MAPPINGS
+* Update the log message for ilo drivers
+* Deploy templates: fix updating steps in Python 3
+* Fix pysendfile requirement marker
+* Add option to protect available nodes from accidental deletion
+* Deploy Templates: add 'extra' field to DB & object
+* Trivial: Fix error message when waiting for power state
+* Allocation API: fix minor issues in the API reference
+* Allocation API: reference documentation
+* Adding bios\_interface reference to api docs
+* Set available\_nodes in tempest conf
+* Update the proliantutils version in documentation
+* [trivial] Removing python 3.5 template jobs
+* Deploy Templates: Fix DB & object nits
+* Add check for object versions
+* [Trivial] Fix incorrect logging in destroy\_allocation
+* Allocation API: taking over allocations of offline conductors
+* Allocation API: resume allocations on conductor restart
+* Devstack - run vbmc as sudo
+* Documentation update for iLO Drivers
+* Follow up - API - Implement /events endpoint
+* Follow up to node description
+* ensure that socat serial proxy keeps running
+* Deprecate Cisco drivers
+* Follow up to ISO image build patch
+* API - Implement /events endpoint
+* Add a requisite for metadata with BFV
+* [Follow Up] Add support for Smart NICs
+* Support using JSON-RPC instead of oslo.messaging
+* Deploy templates: data model, DB API & objects
+* [Follow Up] Expose is\_smartnic in port API
+* Prioritize sloppy nodes for power sync
+* Expose conductors: api-ref
+* Remove duplicated jobs and refactor jobs
+* Allocation API: fix a small inconsistency
+* Expose is\_smartnic in port API
+* [Trivial] Allocation API: correct syntax in API version history docs
+* Allocation API: REST API implementation
+* Make power sync unit test operational
+* Allow case-insensitivity when setting conductor\_group via API
+* Optionally preserve original system boot order upon instance deployment
+* Add support for Smart NICs
+* Add a voting CI job running unit tests with driver-requirements
+* [Refactor] Make caching BIOS settings explicit
+* [docs] OOB RAID implementation for ilo5 based HPE Proliant servers
+* Make iLO BIOS interface clean steps asynchronous
+* Provides mount point as cinder requires it to attach volume
+* Add description field to node: api-ref
+* Add description field to node
+* Fix test for 'force\_persistent\_boot\_device' (i)PXE driver\_info option
+* Fix iPXE boot interface with ipxe\_enabled=False
+* Allocation API: conductor API (without HA and take over)
+* Removing deprecated drac\_host property
+* Add is\_smartnic to Port data model
+* Remove uses of logger name "oslo\_messaging"
+* [Trivial] Fix typo in noop interface comment
+* Remove duplicated fault code
+* Fix listing nodes with conductor could raise
+* Parallelize periodic power sync calls follow up
+* Build ISO out of EFI system partition image
+* Make versioned notifications topics configurable
+* Build UEFI-only ISO for UEFI boot
+* Parallelize periodic power sync calls
+* Limit the timeout value of heartbeat\_timeout
+* Replace use of Q\_USE\_PROVIDERNET\_FOR\_PUBLIC
+* Make ipmi\_force\_boot\_device more user friendly
+* Follow-up logging change
+* Remove dsvm from zuulv3 jobs
+* Allocation API: allow picking random conductor for RPC topic
+* Fix updating nodes with removed or broken drivers
+* Fix ironic port creation after Redfish inspection
+* Allocation API: minor fixes to DB and RPC
+* Allocation API: allow skipping retries in TaskManager
+* Allocation API: database and RPC
+* Allow missing \`\`local\_gb\`\` property
+* Fix typo in release note
+* Fix IPv6 iPXE support
+* OOB RAID implementation for ilo5 based HPE Proliant servers
+* Fix SushyError namespacing in Redfish inspection
+* Allow disabling TFTP image cache
+* Add pxe template per node
+* Fix the misspelling of "configuration"
+* Switch to cirros 0.4.0
+* Update tox version to 2.0
+* Disable metadata\_csum when creating ext4 filesystems
+* Switch the default NIC driver to e1000
+* Change openstack-dev to openstack-discuss
+* Fix XClarity driver management defect
+* Ignore newly introduced tables in pre-upgrade versions check
+* Switch CI back to xenial
+
 12.0.0
 ------
 
+* Add "owner" information field
 * Introduce configuration option [ipmi]ipmi\_disable\_timeout
 * Enroll XClarity machines in Ironic's devstack setting
 * spelling error
@@ -64,6 +209,7 @@ CHANGES
 * Fix DHCPv6 support
 * Revert "Add openstack/placement as a required project for ironic-grenade\*"
 * Add api-ref for conductor group
+* Follow-up patch for I71feefa3d0593fd185a286bec4ce38607203641d
 * Fix ironic developer quickstart document
 * Add note to pxe configuration doc
 * Create base pxe class
@@ -78,6 +224,7 @@ CHANGES
 * Remove oneview drivers
 * Completely remove support for deprecated Glance V1
 * Avoid race with nova on power sync and rescue
+* Log a warning for Gen8 Inspection
 * Doc: Adds cinder as a service requires creds
 * Fix unit test run on OS X
 * Fixes a race condition in the hash ring code

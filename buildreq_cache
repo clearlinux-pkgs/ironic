@@ -3,6 +3,10 @@ WSME
 WSME-python
 alembic-python
 automaton-python
+bashate-python
+doc8-python
+flake8-import-order-python
+hacking
 ironic-lib-python
 jsonpatch
 jsonpatch-python
@@ -15,6 +19,8 @@ oslo.policy-python
 oslo.reports-python
 oslo.rootwrap-python
 oslo.upgradecheck-python
+oslotest
+oslotest-python
 osprofiler
 osprofiler-python
 prettytable
@@ -27,6 +33,8 @@ python-swiftclient-python
 retrying
 retrying-python
 sqlalchemy-migrate-python
+stestr
+stestr-python
 tooz
 tooz-python
 warlock-python

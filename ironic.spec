@@ -6,7 +6,7 @@
 #
 Name     : ironic
 Version  : 12.1.0
-Release  : 11
+Release  : 12
 URL      : https://tarballs.openstack.org/ironic/ironic-12.1.0.tar.gz
 Source0  : https://tarballs.openstack.org/ironic/ironic-12.1.0.tar.gz
 Source99 : https://tarballs.openstack.org/ironic/ironic-12.1.0.tar.gz.asc
@@ -14,7 +14,7 @@ Summary  : OpenStack Bare Metal Provisioning
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: ironic-bin = %{version}-%{release}
-Requires: ironic-config = %{version}-%{release}
+Requires: ironic-data = %{version}-%{release}
 Requires: ironic-license = %{version}-%{release}
 Requires: ironic-python = %{version}-%{release}
 Requires: ironic-python3 = %{version}-%{release}
@@ -65,40 +65,92 @@ Requires: rfc3986
 Requires: six
 Requires: stevedore
 Requires: tooz
+BuildRequires : Jinja2
+BuildRequires : SQLAlchemy
 BuildRequires : WSME
 BuildRequires : WSME-python
+BuildRequires : WebOb
+BuildRequires : alembic
+BuildRequires : alembic-python
+BuildRequires : automaton
 BuildRequires : automaton-python
+BuildRequires : bashate-python
 BuildRequires : buildreq-distutils3
+BuildRequires : doc8-python
+BuildRequires : eventlet
+BuildRequires : flake8-import-order-python
+BuildRequires : futurist
+BuildRequires : hacking
+BuildRequires : ironic-lib
 BuildRequires : ironic-lib-python
 BuildRequires : jsonpatch
 BuildRequires : jsonpatch-python
+BuildRequires : jsonpointer-python
+BuildRequires : jsonschema
+BuildRequires : keystoneauth1
 BuildRequires : keystonemiddleware
+BuildRequires : openstacksdk
 BuildRequires : openstacksdk-python
+BuildRequires : os-traits
 BuildRequires : os-traits-python
+BuildRequires : oslo.concurrency
+BuildRequires : oslo.config
+BuildRequires : oslo.context
+BuildRequires : oslo.db
 BuildRequires : oslo.db-python
+BuildRequires : oslo.i18n
+BuildRequires : oslo.log
+BuildRequires : oslo.messaging
+BuildRequires : oslo.middleware
+BuildRequires : oslo.policy
 BuildRequires : oslo.policy-python
+BuildRequires : oslo.reports
 BuildRequires : oslo.reports-python
+BuildRequires : oslo.rootwrap
 BuildRequires : oslo.rootwrap-python
+BuildRequires : oslo.serialization
+BuildRequires : oslo.service
+BuildRequires : oslo.upgradecheck
 BuildRequires : oslo.upgradecheck-python
+BuildRequires : oslo.utils
 BuildRequires : oslo.versionedobjects
+BuildRequires : oslotest
+BuildRequires : oslotest-python
 BuildRequires : osprofiler
 BuildRequires : osprofiler-python
 BuildRequires : pbr
+BuildRequires : pecan
 BuildRequires : pluggy
+BuildRequires : prettytable
+BuildRequires : psutil
 BuildRequires : psutil-python
 BuildRequires : py-python
+BuildRequires : pysendfile
 BuildRequires : pysendfile-python
 BuildRequires : pytest
+BuildRequires : python-cinderclient
 BuildRequires : python-cinderclient-python
+BuildRequires : python-glanceclient
 BuildRequires : python-glanceclient-python
+BuildRequires : python-neutronclient
 BuildRequires : python-neutronclient-python
+BuildRequires : python-swiftclient
 BuildRequires : python-swiftclient-python
+BuildRequires : pytz
+BuildRequires : requests
 BuildRequires : retrying
 BuildRequires : retrying-python
+BuildRequires : rfc3986
+BuildRequires : six
+BuildRequires : sqlalchemy-migrate-python
+BuildRequires : stestr
+BuildRequires : stestr-python
+BuildRequires : stevedore
 BuildRequires : tooz
 BuildRequires : tooz-python
 BuildRequires : tox
 BuildRequires : virtualenv
+BuildRequires : warlock-python
 
 %description
 Please see https://alembic.readthedocs.org/en/latest/index.html for general documentation
@@ -106,19 +158,19 @@ Please see https://alembic.readthedocs.org/en/latest/index.html for general docu
 %package bin
 Summary: bin components for the ironic package.
 Group: Binaries
-Requires: ironic-config = %{version}-%{release}
+Requires: ironic-data = %{version}-%{release}
 Requires: ironic-license = %{version}-%{release}
 
 %description bin
 bin components for the ironic package.
 
 
-%package config
-Summary: config components for the ironic package.
-Group: Default
+%package data
+Summary: data components for the ironic package.
+Group: Data
 
-%description config
-config components for the ironic package.
+%description data
+data components for the ironic package.
 
 
 %package license
@@ -155,7 +207,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555949059
+export SOURCE_DATE_EPOCH=1559833651
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -173,6 +232,10 @@ python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
+## install_append content
+mkdir -p %{buildroot}/usr/share/defaults/ironic
+mv %{buildroot}/usr/etc/ironic  %{buildroot}/usr/share/defaults/ironic
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -186,12 +249,12 @@ echo ----[ mark ]----
 /usr/bin/ironic-rootwrap
 /usr/bin/ironic-status
 
-%files config
+%files data
 %defattr(-,root,root,-)
-%config /usr/etc/ironic/rootwrap.conf
-%config /usr/etc/ironic/rootwrap.d/ironic-images.filters
-%config /usr/etc/ironic/rootwrap.d/ironic-lib.filters
-%config /usr/etc/ironic/rootwrap.d/ironic-utils.filters
+/usr/share/defaults/ironic/ironic/rootwrap.conf
+/usr/share/defaults/ironic/ironic/rootwrap.d/ironic-images.filters
+/usr/share/defaults/ironic/ironic/rootwrap.d/ironic-lib.filters
+/usr/share/defaults/ironic/ironic/rootwrap.d/ironic-utils.filters
 
 %files license
 %defattr(0644,root,root,0755)

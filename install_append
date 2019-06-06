@@ -1,0 +1,2 @@
+mkdir -p %{buildroot}/usr/share/defaults/ironic
+mv %{buildroot}/usr/etc/ironic  %{buildroot}/usr/share/defaults/ironic

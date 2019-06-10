@@ -1,6 +1,31 @@
 CHANGES
 =======
 
+12.1.1
+------
+
+* Update sphinx requirements
+* devstack: configure rabbit outside of API configuration
+* Do not try to return mock as JSON in unit tests
+* Make the JSON RPC server work with both IPv4 and IPv6
+* Fix pyghmi path
+* OpenDev Migration Patch
+* Do not try to create temporary URLs with zero lifetime
+* Place upper bound on python-dracclient version
+* Ansible module: fix clean error handling
+* Ansible module: fix partition\_configdrive.sh file
+* Ansible module fix: stream\_url
+* Use the PUBLIC\_BRIDGE for vxlan
+* doc: update ibmc driver support servers document
+* ipmi: Ignore sensor debug data
+* Fix capabilities passed as string in agent prepare
+* Respect $USE\_PYTHON3 settings for gunicorn
+* Migrate ironic-grenade-dsvm-multinode-multitenant job to Ubuntu Bionic
+* Replace openstack.org git:// URLs with https://
+* Prepare stable/stein testing
+* Update UPPER\_CONSTRAINTS\_FILE for stable/stein
+* Update .gitreview for stable/stein
+
 12.1.0
 ------
 

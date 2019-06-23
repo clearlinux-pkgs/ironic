@@ -1,34 +1,105 @@
 CHANGES
 =======
 
-12.1.1
+12.2.0
 ------
 
-* Update sphinx requirements
+* Spruce up release notes for 12.2.0 release
+* Update API history and release mapping for 12.2.0
+* DRAC: Adding reset\_idrac and known\_good\_state cleaning steps
+* devstack: add missing variables for ironic-python-agent-builder
+* Remove ipxe tags when ipx6 is in use
+* Update qemu hook to facilitate Multicast
+* redfish: handle missing Bios attribute
+* Fix :param: in docstring
+* Updates ironic for using ironic-python-agent-builder
+* Do not log an exception if Allocation is deleted during handling
+* Add release note updating status of smartnics
+* Switch to use exception from ironic-lib
+* Change constraints opendev.org to release.openstack.org
+* Ansible module: fix configdrive partition creation step
+* Remove deprecated option [DEFAULT]enabled\_drivers
+* Fix regex string in the hacking check
+* Add api-ref for allocation update
+* Add a pxe/uefi/grub2 CI job
+* Bump lower mock version to 3.0.0
+* Start using importlib for Python 3.x
+* Remove XML support in parsable\_error middleware
+* Fix binary file upload to Swift
+* fix typo in code comment
+* Software RAID: Trigger grub installation on the holder disks
+* Move stray reno file
+* Trivial: correct configuration option copy-pased from inspector
+* Remove commit\_required in iDRAC hardware type
+* Make the multinode grenade job voting again
 * devstack: configure rabbit outside of API configuration
+* Blacklist python-cinderclient 4.0.0
+* Publish baremetal endpoint via mdns
+* Fix inaccurate url links
+* Update sphinx requirements
+* Allocation API: correct setting name to None
+* Allocation API: backfilling allocations
+* Fix GRUB config path when building EFI ISO
+* Add DHCP server part to make the document more detail
 * Do not try to return mock as JSON in unit tests
-* Make the JSON RPC server work with both IPv4 and IPv6
+* Remove deprecated option [ilo]power\_retry
+* Add API to allow update allocation name and extra field
+* Update Python 3 test runtimes for Train
+* Replace hardcoded "stack" user to $STACK\_USER
+* Run vbmcd as stack user in devstack
+* Adding enabled\_boot\_interface attribute in tempest config
+* Add openstack commands in node deployment guide
+* Add a high level vision reflection document
+* Add iDRAC driver realtime RAID creation and deletion
+* Correct spelling errors
+* Replace git.openstack.org URLs with opendev.org URLs
+* Direct bridge to be setup
 * Fix pyghmi path
 * OpenDev Migration Patch
-* Do not try to create temporary URLs with zero lifetime
+* Removes \`hash\_distribution\_replicas\` configuration option
+* Truncate node text fields when too long
+* Add note for alternative checksums
+* Make the JSON RPC server work with both IPv4 and IPv6
+* Jsonschema 3.0.1: Binding the schema to draft-04
 * Place upper bound on python-dracclient version
-* Ansible module: fix clean error handling
+* devstack: Remove syslinux dependency
+* Do not try to create temporary URLs with zero lifetime
 * Ansible module: fix partition\_configdrive.sh file
-* Ansible module fix: stream\_url
 * Use the PUBLIC\_BRIDGE for vxlan
+* Move devstack emulators configs under /etc/ironic
+* Uncap jsonschema in requirements
+* Split ibmc power/reboot classes
+* Temporarily mark grenade multinode as non-voting
+* Improve VirtualBMC use in Devstack
+* Run IPMI, SNMP and Redfish BMC emulators as stack
+* Add UEFI firmware to Redfish emulator config
+* Add systemd unit for sushy emulator in devstack
+* Ansible module: fix clean error handling
+* [Trivial] Fix typo in agent\_base\_vendor unit test
+* Fix exception generation errors
+* Add a request\_timeout to neutron
 * doc: update ibmc driver support servers document
+* Ansible module fix: stream\_url
+* Make it possible to send sensor data for all nodes
+* Slightly rephrase note in tenant networking docs
+* Bump sphinxcontrib-pecanwsme to 0.10.0
 * ipmi: Ignore sensor debug data
-* Fix capabilities passed as string in agent prepare
-* Respect $USE\_PYTHON3 settings for gunicorn
-* Migrate ironic-grenade-dsvm-multinode-multitenant job to Ubuntu Bionic
+* Make 'noop' the explicit default of default\_storage\_interface
+* Docs: correct expected host format for drac\_address
+* Check for deploy.deploy deploy step in heartbeat
+* Workaround for sendfile size limit
+* Workaround for uefi job with ubuntu bionic
 * Replace openstack.org git:// URLs with https://
-* Prepare stable/stein testing
-* Update UPPER\_CONSTRAINTS\_FILE for stable/stein
-* Update .gitreview for stable/stein
+* Remove vbmc log file in devstack
+* Add versions to release notes series
+* Imported Translations from Zanata
+* Update master for stable/stein
 
 12.1.0
 ------
 
+* Fix capabilities passed as string in agent prepare
+* Respect $USE\_PYTHON3 settings for gunicorn
 * Add systemd unit for vbmcd in devstack
 * Workaround for postgres job with ubuntu bionic
 * Add release note on conntrack issue on bionic
@@ -54,6 +125,7 @@ CHANGES
 * Return 405 for old versions in allocation and deploy template APIs
 * honor ipmi\_port in serial console drivers
 * Follow up to available node protection
+* Migrate ironic-grenade-dsvm-multinode-multitenant job to Ubuntu Bionic
 * Deploy templates: conductor and API nits
 * Deploy Templates: documentation
 * Fixing a bash test in devstack ironic lib

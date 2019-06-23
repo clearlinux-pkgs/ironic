@@ -1,4 +1,4 @@
-12.1.1
+12.2.0
 WSME
 WSME-python
 alembic-python
@@ -28,6 +28,8 @@ psutil-python
 pysendfile-python
 python-cinderclient-python
 python-glanceclient-python
+python-mock
+python-mock-python
 python-neutronclient-python
 python-swiftclient-python
 retrying

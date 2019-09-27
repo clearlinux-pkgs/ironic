@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xFC43F0EE211DFED8 (infra-root@openstack.org)
 #
 Name     : ironic
-Version  : 12.2.0
-Release  : 16
-URL      : https://tarballs.openstack.org/ironic/ironic-12.2.0.tar.gz
-Source0  : https://tarballs.openstack.org/ironic/ironic-12.2.0.tar.gz
-Source99 : https://tarballs.openstack.org/ironic/ironic-12.2.0.tar.gz.asc
+Version  : 13.0.0
+Release  : 17
+URL      : https://tarballs.openstack.org/ironic/ironic-13.0.0.tar.gz
+Source0  : https://tarballs.openstack.org/ironic/ironic-13.0.0.tar.gz
+Source1 : https://tarballs.openstack.org/ironic/ironic-13.0.0.tar.gz.asc
 Summary  : OpenStack Bare Metal Provisioning
 Group    : Development/Tools
 License  : Apache-2.0
@@ -71,10 +71,15 @@ BuildRequires : WSME
 BuildRequires : WebOb
 BuildRequires : alembic
 BuildRequires : automaton
+BuildRequires : bandit-python
 BuildRequires : bashate-python
 BuildRequires : buildreq-distutils3
+BuildRequires : ddt
+BuildRequires : ddt-python
+BuildRequires : doc8-python
 BuildRequires : eventlet
 BuildRequires : futurist
+BuildRequires : hacking
 BuildRequires : ironic-lib
 BuildRequires : jsonpatch
 BuildRequires : jsonschema
@@ -111,8 +116,6 @@ BuildRequires : pysendfile
 BuildRequires : pytest
 BuildRequires : python-cinderclient
 BuildRequires : python-glanceclient
-BuildRequires : python-mock
-BuildRequires : python-mock-python
 BuildRequires : python-neutronclient
 BuildRequires : python-swiftclient
 BuildRequires : pytz
@@ -175,14 +178,15 @@ python3 components for the ironic package.
 
 
 %prep
-%setup -q -n ironic-12.2.0
+%setup -q -n ironic-13.0.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1561305437
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569592853
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

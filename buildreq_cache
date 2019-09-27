@@ -1,9 +1,12 @@
-12.2.0
+13.0.0
 WSME
 WSME-python
 alembic-python
 automaton-python
+bandit-python
 bashate-python
+ddt
+ddt-python
 doc8-python
 flake8-import-order-python
 hacking

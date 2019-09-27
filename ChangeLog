@@ -1,11 +1,149 @@
 CHANGES
 =======
 
+13.0.0
+------
+
+* Update release mappings for Train
+* Release notes cleanup for 13.0.0 (mk2)
+* Document PXE retries
+* Update env. variables in the documentation
+* Add iDRAC RAID deploy steps
+* Don't resume deployment or cleaning on heartbeat when polling
+* Make multinode jobs non-voting
+* devstack: wait for conductor to start and register itself
+* Allow retrying PXE boot if it takes too long
+* Lower MTU override
+* Devstack: Fix iPXE apache log location bug
+* Serve virtual media boot images from ironic conductor
+* Add Redfish inspect interface to idrac HW type
+* Add deploy steps for iLO Management interface
+* Do not log an error on heartbeat in deploying/cleaning/rescuing
+* Add an option to abort cleaning and deployment if node is in maintenance
+* CI: move libvirt images to /opt for standalone and multinode jobs
+* Add first idrac HW type Redfish interface support
+* Remove cisco references and add release note
+* Add \`FLOPPY\` boot device constant
+* Combined gate fixes
+* Release notes cleanup for 13.0.0
+* CI: move the fast-track job to the experimental pipeline
+* Remove support for CoreOS images
+* Fix gate failure related to jsonschema
+* Minor: change a misleading InvalidState error message
+* Build pdf doc
+* iLO driver doc update
+* Use openstack cli in image creation guide
+* iLO driver doc update
+* devstack: save iPXE httpd logs
+* Prelude for 13.0.0
+* Add a release note for iscsi\_verify\_attempts deprecation
+* Fix typo in handling of exception FailedToGetIPAddressOnPort
+* Add iLO RAID deploy steps
+* add table of available cleaning steps to documentation
+* Prepare for deprecation of iscsi\_verify\_attempts in ironic-lib
+* Add software raid release note to ironic
+* Add ironic-specs link to readme.rst
+* Fixed problem with UEFI iSCSI boot for nic adapters
+* DRAC : clear\_job\_queue clean step to fix pending bios config jobs
+* Add deploy steps for iLO BIOS interface
+* Follow-up for deploy steps for Redfish BIOS interface
+* Adding file uri support for ipa image location
+* Adjust placement query for reserved nodes
+* Add indicator management harness to ManagementInterface
+* Adds dhcp-all-interfaces element
+* Do not wait for console being started on timeout
+* Out-of-band \`erase\_devices\` clean step for Proliant Servers
+* Pass target\_raid\_config field to ironic variable
+* Allow deleting unbound ports on active node
+* Follow up to Option to send all portgroup data
+* Lower standalone concurrency to 3 from 4
+* Make ironic\_log Ansible callback Python 3 ready
+* Remove ironic command bash completion
+* devstack: Fix libvirtd/libvirt-bin detection
+* Add iPXE boot interface to 'ilo' hardware type
+* Move to unsafe caching
+* Allow to configure additional ipmitool retriable errors
+* Fix exception on provisioning with idrac hw type
+* Install sushy if redfish is a hardware type
+* Add \`filename\` parameter to Redfish virtual media boot URL
+* Add set\_boot\_device hook in \`redfish\` boot interface
+* Add Redfish Virtual Media Boot support
+* Follow-up to power sync reno
+* Add new method 'apply\_configuration' to RAIDInterface
+* Do not tear down node upon cleaning failure
+* Switch non-multinode jobs to new-style neutron services
+* Add deploy steps for Redfish BIOS interface
+* Ansible: fix partition\_configdrive for logical root\_devices
+* Support power state change callbacks to nova using ksa\_adapter
+* Docu: Fix broken link
+* Fixing broken links
+* DRAC : Fix issue for RAID-0 creation for multiple disks for PERC H740P
+* Uses IPA-B to build in addition to CoreOS
+* Asynchronous out of band deploy steps fails to execute
+* Clean up RAID documentation
+* Enable testing software RAID in the standalone job
+* devstack: allow creating more than one volume for a VM
+* Allow configuring global deploy and rescue kernel/ramdisk
+* Fix missing print format error
+* Update software RAID configuration documentation
+* Use HTTPProxyToWSGI middleware from oslo
+* RAID creation fails with 'ilo5' RAID interface
+* RAID create fails if 'controller' is missing in 'target\_raid\_config'
+* Use openstacksdk for accessing ironic-inspector
+* CI Documentation
+* Enable no IP address to be returned
+* Change debug to error for heartbeats
+* CI: stop using pyghmi from git master
+* Fixes power-on failure for 'ilo' hardware type
+* Creation of UEFI ISO fails with efiboot.img
+* Remove deprecated Neutron authentication options
+* Follow-up to the IntelIPMIHardware patch
+* Ansible driver: fix deployment with serial specified as root device hint
+* Enable testing adoption in the CI
+* Fix serial/wwn gathering for ansible+python3
+* Update api-ref location
+* IPA does not boot up after cleaning reboot for 'redfish' bios interface
+* Revert "Add logic to determine Ironic node is HW or not into configure\_ironic\_dirs"
+* Filter security group list on the ID's we expect
+* Clean lower-constraints.txt
+* [Trivial] Fix is\_fast\_track parameter doc string
+* Failure in get\_sensor\_data() of 'redfish' management interface
+* Abstract away pecan.request/response
+* Fix potential race condition on node power on and reboot
+* iLO firmware update fails with 'update\_firmware\_sum' clean step
+* Bump keystonauth and warlock versions
+* Don't install ubuntu efi debs on cent
+* Remove the PXE driver page
+* Ansible module: fix deployment for private and/or shared images
+* Add logic to determine Ironic node is HW or not into install\_ironic
+* Add logic to determine Ironic node is HW or not into configure\_ironic\_dirs
+* Deal with iPXE boot interface incompatibility in Train
+* Bump openstackdocstheme to 1.20.0
+* Remove deprecated app.wsgi script
+* devstack: Install arch specific debs only when deploying to that arch
+* DRAC: Upgraded RAID delete\_config cleaning step
+* Fix invalid assert state
+* CI: remove quotation marks from TEMPEST\_PLUGINS variable
+* Remove CIMC/UCS drivers
+* Add IntelIPMIHardware
+* Collect sensor data in \`\`redfish\`\` hardware type
+* [Trivial] Software RAID: Documentation edits
+* Software RAID: Add documentation
+* Blacklist sphinx 2.1.0 (autodoc bug)
+* Follow-up on UEFI/Grub2 job
+* Adds bandit template and exclude some of tests
+* Add documentation for IntelIPMI hardware
+* Add check on get\_endpoint returning None
+* Option to send all portgroup data
+
 12.2.0
 ------
 
+* Replace deprecated with\_lockmode with with\_for\_update
 * Spruce up release notes for 12.2.0 release
 * Update API history and release mapping for 12.2.0
+* Refactoring: flatten the glance service module
+* Remove the deprecated glance authentication options
 * DRAC: Adding reset\_idrac and known\_good\_state cleaning steps
 * devstack: add missing variables for ironic-python-agent-builder
 * Remove ipxe tags when ipx6 is in use
@@ -17,6 +155,8 @@ CHANGES
 * Add release note updating status of smartnics
 * Switch to use exception from ironic-lib
 * Change constraints opendev.org to release.openstack.org
+* Incorporate bandit support in CI
+* Remove elilo support
 * Ansible module: fix configdrive partition creation step
 * Remove deprecated option [DEFAULT]enabled\_drivers
 * Fix regex string in the hacking check
@@ -113,6 +253,7 @@ CHANGES
 * Deploy Templates: factor out ironic.conductor.steps
 * Make metrics usable
 * Kg key for IPMIv2 authentication
+* Add fast-track testing
 * fast tracked deployment support
 * Update doc for UEFI first
 * Fix lower-constraints job

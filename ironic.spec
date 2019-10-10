@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xFC43F0EE211DFED8 (infra-root@openstack.org)
 #
 Name     : ironic
-Version  : 13.0.0
-Release  : 17
-URL      : https://tarballs.openstack.org/ironic/ironic-13.0.0.tar.gz
-Source0  : https://tarballs.openstack.org/ironic/ironic-13.0.0.tar.gz
-Source1 : https://tarballs.openstack.org/ironic/ironic-13.0.0.tar.gz.asc
+Version  : 13.0.1
+Release  : 18
+URL      : https://tarballs.openstack.org/ironic/ironic-13.0.1.tar.gz
+Source0  : https://tarballs.openstack.org/ironic/ironic-13.0.1.tar.gz
+Source1 : https://tarballs.openstack.org/ironic/ironic-13.0.1.tar.gz.asc
 Summary  : OpenStack Bare Metal Provisioning
 Group    : Development/Tools
 License  : Apache-2.0
@@ -178,14 +178,14 @@ python3 components for the ironic package.
 
 
 %prep
-%setup -q -n ironic-13.0.0
+%setup -q -n ironic-13.0.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569592853
+export SOURCE_DATE_EPOCH=1570735509
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar

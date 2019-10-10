@@ -1,6 +1,18 @@
 CHANGES
 =======
 
+13.0.1
+------
+
+* DRAC: Fix a bug for job creation when only required
+* Fix devstack installation failure
+* Change log level based on node status
+* Use correct function to stop service
+* Update docs for train release
+* Prepare stable/train testing
+* Update TOX/UPPER\_CONSTRAINTS\_FILE for stable/train
+* Update .gitreview for stable/train
+
 13.0.0
 ------
 

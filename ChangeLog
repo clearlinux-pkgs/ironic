@@ -1,9 +1,21 @@
 CHANGES
 =======
 
+13.0.2
+------
+
+* Do not ignore 'fields' query parameter when building next url
+* Change MTU logic to allow for lower MTUs automatically
+* Mask secrets when logging in json\_rpc
+* Read in non-blocking fashion when starting console
+* Fix drive sensors collection in \`redfish\` mgmt interface
+* DRAC: Fix a bug for delete\_config with multiple controllers
+* DRAC: Fix a bug for clear\_job\_queue clean step with non-BIOS pending job
+
 13.0.1
 ------
 
+* grub configuration should use user kernel & ramdisk
 * DRAC: Fix a bug for job creation when only required
 * Fix devstack installation failure
 * Change log level based on node status

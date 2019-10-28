@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xFC43F0EE211DFED8 (infra-root@openstack.org)
 #
 Name     : ironic
-Version  : 13.0.1
-Release  : 18
-URL      : https://tarballs.openstack.org/ironic/ironic-13.0.1.tar.gz
-Source0  : https://tarballs.openstack.org/ironic/ironic-13.0.1.tar.gz
-Source1 : https://tarballs.openstack.org/ironic/ironic-13.0.1.tar.gz.asc
+Version  : 13.0.2
+Release  : 19
+URL      : https://tarballs.openstack.org/ironic/ironic-13.0.2.tar.gz
+Source0  : https://tarballs.openstack.org/ironic/ironic-13.0.2.tar.gz
+Source1 : https://tarballs.openstack.org/ironic/ironic-13.0.2.tar.gz.asc
 Summary  : OpenStack Bare Metal Provisioning
 Group    : Development/Tools
 License  : Apache-2.0
@@ -128,6 +128,7 @@ BuildRequires : stestr-python
 BuildRequires : stevedore
 BuildRequires : tooz
 BuildRequires : tox
+BuildRequires : util-linux
 BuildRequires : virtualenv
 
 %description
@@ -178,14 +179,14 @@ python3 components for the ironic package.
 
 
 %prep
-%setup -q -n ironic-13.0.1
+%setup -q -n ironic-13.0.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570735509
+export SOURCE_DATE_EPOCH=1572286714
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -207,7 +208,7 @@ PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test ||
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ironic
-cp LICENSE %{buildroot}/usr/share/package-licenses/ironic/LICENSE
+cp %{_builddir}/ironic-13.0.2/LICENSE %{buildroot}/usr/share/package-licenses/ironic/294b43b2cec9919063be1a3b49e8722648424779
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -238,7 +239,7 @@ mv %{buildroot}/usr/etc/ironic  %{buildroot}/usr/share/defaults/ironic
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/ironic/LICENSE
+/usr/share/package-licenses/ironic/294b43b2cec9919063be1a3b49e8722648424779
 
 %files python
 %defattr(-,root,root,-)

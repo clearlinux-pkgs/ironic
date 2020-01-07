@@ -6,7 +6,7 @@
 #
 Name     : ironic
 Version  : 13.0.2
-Release  : 21
+Release  : 22
 URL      : https://tarballs.openstack.org/ironic/ironic-13.0.2.tar.gz
 Source0  : https://tarballs.openstack.org/ironic/ironic-13.0.2.tar.gz
 Source1  : https://tarballs.openstack.org/ironic/ironic-13.0.2.tar.gz.asc

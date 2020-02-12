@@ -1,29 +1,150 @@
 CHANGES
 =======
 
-13.0.2
+14.0.0
 ------
 
-* Do not ignore 'fields' query parameter when building next url
-* Change MTU logic to allow for lower MTUs automatically
+* Fix up release notes for 14.0.0
+* Actually use ironic-python-agent from source in source builds
+* Update release mappings for Ussuri
+* tell reno to ignore the kilo branch
+* Update API version history for v1.61
+* Split cleaning-related functions from manager.py into a new module
+* Split deployment-related functions from manager.py into a new module
+* Disable debug output in doc building
+* Fix jsonpatch related tests
+* Fix ipxe interface to perform ipxe boot without ipxe\_enabled enabled
+* Fix typo in setup-network.sh script
+* Support node retirement
+* Make ironic-api compatible with WSGI containers other than mod\_wsgi
+* Don't require root partition when installing a whole disk image
+* Clean up api controller base classes
+* Deprecate irmc hardware type
+* Subclass wsme.exc.ClientSideError
+* Use str type instead of wsme.types.text
+* Use bionic job for bifrost integration
+* Follow up to root device hints in instance\_info
+* Deprecate ibmc
+* Fix incorrect ibmc\_address parsing on Python 3.8
+* Fix entry paths for cleaning and deployment
+* Fix API docs for target\_power\_state response
+* Document using CentOS 8 DIB IPA images for Ussuri and newer
+* Lower RAM for DIB jobs to 2 GiB
+* Remove reference to deprecated [disk\_utils]iscsi\_verify\_attempts
+* Add node info and exc name when getting rootfs info from Glance
+* Fix fast\_track + agent\_url update fix
+* CI: make the metalsmith job voting and gating
+* devstack: install bindep for diskimage-builder
+* Allow reading root\_device from instance\_info
+* Add a missing versionadded for configdrive[vendor\_data]
+* Make qemu hook running with python3
+* Refactor glance retry code to use retrying lib
+* Fix duplicated words issue like "are are placed"
+* devstack: switch to using CentOS 8 DIB ramdisks by default
+* Remove the deprecated [glance]glance\_num\_retries
+* Fix missing job\_id parameter in the log message
+* Fix get\_boot\_option logic for software raid
+* Allow node owners to administer associated ports
+* Explicitly use ipxe as boot interface for iPXE testing
+* Replace disk-image-create with ironic-python-agent-builder
+* Remove those switches for python2
+* Fix invalid assertIsNone statements
+* Add librsvg2\* to bindep
+* Stop using six library
+* Add notes on the pxe template for aarch64
+* Enforce running tox with correct python version based on env
+* Tell the multinode subnode and grenade to use /opt
+* Disable automated clean on newer jobs
+* Extend service timeout
+* Tune down multinode concurrency
+* Restrict ability to change owner on provisioned or allocated node
+* Correct power state handling for managed in-band inspection
+* Implement managed in-band inspection boot for redfish-virtual-media
+* redfish-vmedia: correctly pass ipa-debug
+* Add a CI job to UEFI boot over Redfish virtual media
+* Fix use of urlparse.urljoin
+* Import importlib directly
+* Increasing BUILD\_TIMEOUT value for multinode job
+* Remove deprecated ironic-agent element
+* Add owner to allocations and create relevant policies
+* CI: do not enable rescue on indirect jobs
+* Update nova os-server-external-events response logic
+* DRAC: Drives conversion from raid to jbod
+* Changed to bug fix to follow-on idrac job patch
+* Fixes issue with checking whether ISO is passed
+* docs: add a missing heading
+* Add a CI job to legacy boot over Redfish virtual media
+* Fix UEFI NVRAM collision in devstack
+* Remove references to 'firewall\_driver'
+* Make redfish CI jobs pulling sushy-tools from git
+* Prevent localhost from being used as ironic-inspector callback URL
+* Add an ironic-inspector job with managed boot
+* Add timeout when querying agent's command statuses
+* docs: update the local development quickstart to use JSON RPC
+* Drop python 2.7 support and testing
+* Remove unused migration tests
+* Wire in in-band inspection for PXE boot and neutron-based networking
+* Foundation for boot/network management for in-band inspection
+* Add \`instance\_info/kernel\_append\_params\` to \`redfish\`
+* Add indicator management to redfish hw type
+* Mock out the correct greenthread sleep method
+* Don't install syslinux-nonlinux on rhel7
+* Ensure text-only console in devstack
+* Pass correct flags during PXE cleanup in iPXEBoot
+* Drop [agent]heartbeat\_timeout
+* Remove old online migration codes
+* Block ability update callback\_url
+* Stop supporting incompatible heartbeat interfaces
+* Allow node owners to administer nodes
+* Fix variable name in cleanup\_baremetal\_basic\_ops func
+* Switch legacy jobs to Py3
+* Ensure \`isolinux.bin\` is present and configured in devstack
+* Fix \`snmp\` unit test
+* Backward compatibility for the ramdisk\_params change
+* Allow vendor\_data to be included in a configdrive dict
+* Improve iDrac Documentation
+* Correct handling of ramdisk\_params in (i)PXE boot
+* Software RAID: Identify the root fs via its UUID from image metadata
+* Change integration jobs to run under Python3
+* Using loop instead of with\_X
+* CI: add ironic-python-agent-builder to the multinode job
+* Update release with information about zuul job
+* Add virtual media boot section to the docs
+* CI: limit rescue testing to only two jobs
 * Mask secrets when logging in json\_rpc
-* Read in non-blocking fashion when starting console
+* Use new shiny Devices class instead of old ugly Device
+* Switch to ussuri job
+* Do not ignore 'fields' query parameter when building next url
+* Update sushy library version
+* Minor string formatting follow-up to idrac jbod patch
+* Document systemd-nspawn as a nice trick for patching a ramdisk
+* DRAC: Drives conversion from JBOD to RAID
+* Setup ipa-builder before building ramdisk
+* Fix EFIBOOT image upload in devstack
 * Fix drive sensors collection in \`redfish\` mgmt interface
-* DRAC: Fix a bug for delete\_config with multiple controllers
+* Add Redfish vmedia boot interface to idrac HW type
+* Change MTU logic to allow for lower MTUs automatically
 * DRAC: Fix a bug for clear\_job\_queue clean step with non-BIOS pending job
-
-13.0.1
-------
-
+* Documentation for iLO hardware type deploy steps
+* ironic-tempest-functional-python3 unused variables
+* docs: use openstackdocstheme extlink extension
 * grub configuration should use user kernel & ramdisk
-* DRAC: Fix a bug for job creation when only required
-* Fix devstack installation failure
-* Change log level based on node status
+* Raising minimum version of oslo.db
+* DRAC: Fix a bug for delete\_config with multiple controllers
 * Use correct function to stop service
-* Update docs for train release
-* Prepare stable/train testing
-* Update TOX/UPPER\_CONSTRAINTS\_FILE for stable/train
-* Update .gitreview for stable/train
+* Fix devstack installation failure
+* DRAC: Fix a bug for job creation when only required
+* Add a CI job with a DIB-built ramdisk
+* Remove old online migrations and new models
+* Remove earliest version from releasing docs, update examples
+* Change log level based on node status
+* enable\_python3\_package should not be necessary anymore
+* Update doc for CI
+* Add versions to release notes series
+* Document pre-built ramdisk images (including DIB)
+* Run DIB with tracing enabled and increase the DHCP timeout
+* Improve documentation about releasing deliverables
+* Update master for stable/train
 
 13.0.0
 ------
@@ -49,6 +170,7 @@ CHANGES
 * Remove cisco references and add release note
 * Add \`FLOPPY\` boot device constant
 * Combined gate fixes
+* Read in non-blocking fashion when starting console
 * Release notes cleanup for 13.0.0
 * CI: move the fast-track job to the experimental pipeline
 * Remove support for CoreOS images
@@ -88,6 +210,7 @@ CHANGES
 * Move to unsafe caching
 * Allow to configure additional ipmitool retriable errors
 * Fix exception on provisioning with idrac hw type
+* Add logic to determine Ironic node is HW or not into configure\_ironic\_dirs
 * Install sushy if redfish is a hardware type
 * Add \`filename\` parameter to Redfish virtual media boot URL
 * Add set\_boot\_device hook in \`redfish\` boot interface

@@ -6,7 +6,7 @@
 #
 Name     : ironic
 Version  : 14.0.0
-Release  : 23
+Release  : 24
 URL      : https://tarballs.openstack.org/ironic/ironic-14.0.0.tar.gz
 Source0  : https://tarballs.openstack.org/ironic/ironic-14.0.0.tar.gz
 Source1  : https://tarballs.openstack.org/ironic/ironic-14.0.0.tar.gz.asc
@@ -167,6 +167,7 @@ python components for the ironic package.
 Summary: python3 components for the ironic package.
 Group: Default
 Requires: python3-core
+Provides: pypi(ironic)
 
 %description python3
 python3 components for the ironic package.
@@ -181,7 +182,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1581527626
+export SOURCE_DATE_EPOCH=1583159800
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar

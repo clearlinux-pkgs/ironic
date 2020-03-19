@@ -6,7 +6,7 @@
 #
 Name     : ironic
 Version  : 14.0.0
-Release  : 24
+Release  : 25
 URL      : https://tarballs.openstack.org/ironic/ironic-14.0.0.tar.gz
 Source0  : https://tarballs.openstack.org/ironic/ironic-14.0.0.tar.gz
 Source1  : https://tarballs.openstack.org/ironic/ironic-14.0.0.tar.gz.asc
@@ -126,7 +126,11 @@ BuildRequires : tox
 BuildRequires : virtualenv
 
 %description
-Please see https://alembic.readthedocs.org/en/latest/index.html for general documentation
+Ironic
+        ======
+        
+        Team and repository tags
+        ------------------------
 
 %package bin
 Summary: bin components for the ironic package.
@@ -168,6 +172,52 @@ Summary: python3 components for the ironic package.
 Group: Default
 Requires: python3-core
 Provides: pypi(ironic)
+Requires: pypi(alembic)
+Requires: pypi(automaton)
+Requires: pypi(eventlet)
+Requires: pypi(futurist)
+Requires: pypi(ironic_lib)
+Requires: pypi(jinja2)
+Requires: pypi(jsonpatch)
+Requires: pypi(jsonschema)
+Requires: pypi(keystoneauth1)
+Requires: pypi(keystonemiddleware)
+Requires: pypi(openstacksdk)
+Requires: pypi(os_traits)
+Requires: pypi(oslo.concurrency)
+Requires: pypi(oslo.config)
+Requires: pypi(oslo.context)
+Requires: pypi(oslo.db)
+Requires: pypi(oslo.i18n)
+Requires: pypi(oslo.log)
+Requires: pypi(oslo.messaging)
+Requires: pypi(oslo.middleware)
+Requires: pypi(oslo.policy)
+Requires: pypi(oslo.reports)
+Requires: pypi(oslo.rootwrap)
+Requires: pypi(oslo.serialization)
+Requires: pypi(oslo.service)
+Requires: pypi(oslo.upgradecheck)
+Requires: pypi(oslo.utils)
+Requires: pypi(oslo.versionedobjects)
+Requires: pypi(osprofiler)
+Requires: pypi(pbr)
+Requires: pypi(pecan)
+Requires: pypi(psutil)
+Requires: pypi(pysendfile)
+Requires: pypi(python_cinderclient)
+Requires: pypi(python_glanceclient)
+Requires: pypi(python_neutronclient)
+Requires: pypi(python_swiftclient)
+Requires: pypi(pytz)
+Requires: pypi(requests)
+Requires: pypi(retrying)
+Requires: pypi(rfc3986)
+Requires: pypi(sqlalchemy)
+Requires: pypi(stevedore)
+Requires: pypi(tooz)
+Requires: pypi(webob)
+Requires: pypi(wsme)
 
 %description python3
 python3 components for the ironic package.
@@ -182,8 +232,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583159800
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1584643716
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

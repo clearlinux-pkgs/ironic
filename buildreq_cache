@@ -1,9 +1,11 @@
-14.0.0
+15.0.0
 bandit-python
 bashate-python
+ddt
 ddt-python
 doc8-python
 hacking
+oslotest
 oslotest-python
-prettytable
+stestr
 stestr-python

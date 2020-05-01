@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x4F398DEAE440091C (infra-root@openstack.org)
 #
 Name     : ironic
-Version  : 14.0.0
-Release  : 25
-URL      : https://tarballs.openstack.org/ironic/ironic-14.0.0.tar.gz
-Source0  : https://tarballs.openstack.org/ironic/ironic-14.0.0.tar.gz
-Source1  : https://tarballs.openstack.org/ironic/ironic-14.0.0.tar.gz.asc
+Version  : 15.0.0
+Release  : 26
+URL      : https://tarballs.openstack.org/ironic/ironic-15.0.0.tar.gz
+Source0  : https://tarballs.openstack.org/ironic/ironic-15.0.0.tar.gz
+Source1  : https://tarballs.openstack.org/ironic/ironic-15.0.0.tar.gz.asc
 Summary  : OpenStack Bare Metal Provisioning
 Group    : Development/Tools
 License  : Apache-2.0
@@ -73,6 +73,7 @@ BuildRequires : automaton
 BuildRequires : bandit-python
 BuildRequires : bashate-python
 BuildRequires : buildreq-distutils3
+BuildRequires : ddt
 BuildRequires : ddt-python
 BuildRequires : doc8-python
 BuildRequires : eventlet
@@ -101,12 +102,12 @@ BuildRequires : oslo.service
 BuildRequires : oslo.upgradecheck
 BuildRequires : oslo.utils
 BuildRequires : oslo.versionedobjects
+BuildRequires : oslotest
 BuildRequires : oslotest-python
 BuildRequires : osprofiler
 BuildRequires : pbr
 BuildRequires : pecan
 BuildRequires : pluggy
-BuildRequires : prettytable
 BuildRequires : psutil
 BuildRequires : py-python
 BuildRequires : pysendfile
@@ -119,6 +120,7 @@ BuildRequires : pytz
 BuildRequires : requests
 BuildRequires : retrying
 BuildRequires : rfc3986
+BuildRequires : stestr
 BuildRequires : stestr-python
 BuildRequires : stevedore
 BuildRequires : tooz
@@ -188,12 +190,10 @@ Requires: pypi(oslo.concurrency)
 Requires: pypi(oslo.config)
 Requires: pypi(oslo.context)
 Requires: pypi(oslo.db)
-Requires: pypi(oslo.i18n)
 Requires: pypi(oslo.log)
 Requires: pypi(oslo.messaging)
 Requires: pypi(oslo.middleware)
 Requires: pypi(oslo.policy)
-Requires: pypi(oslo.reports)
 Requires: pypi(oslo.rootwrap)
 Requires: pypi(oslo.serialization)
 Requires: pypi(oslo.service)
@@ -224,22 +224,22 @@ python3 components for the ironic package.
 
 
 %prep
-%setup -q -n ironic-14.0.0
-cd %{_builddir}/ironic-14.0.0
+%setup -q -n ironic-15.0.0
+cd %{_builddir}/ironic-15.0.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1584643716
+export SOURCE_DATE_EPOCH=1588304799
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
@@ -253,7 +253,7 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ironic
-cp %{_builddir}/ironic-14.0.0/LICENSE %{buildroot}/usr/share/package-licenses/ironic/294b43b2cec9919063be1a3b49e8722648424779
+cp %{_builddir}/ironic-15.0.0/LICENSE %{buildroot}/usr/share/package-licenses/ironic/294b43b2cec9919063be1a3b49e8722648424779
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -279,7 +279,6 @@ mv %{buildroot}/usr/etc/ironic  %{buildroot}/usr/share/defaults/ironic
 %defattr(-,root,root,-)
 /usr/share/defaults/ironic/ironic/rootwrap.conf
 /usr/share/defaults/ironic/ironic/rootwrap.d/ironic-images.filters
-/usr/share/defaults/ironic/ironic/rootwrap.d/ironic-lib.filters
 /usr/share/defaults/ironic/ironic/rootwrap.d/ironic-utils.filters
 
 %files license

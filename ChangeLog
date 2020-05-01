@@ -1,17 +1,153 @@
 CHANGES
 =======
 
+15.0.0
+------
+
+* Add ironic-python-agent-builder to grenade projects and use netboot
+* Update python-dracclient version
+* Don't break UEFI install with older IPAs
+* Fix supported sushy-oem-idrac version
+* Implements: Reactive HUAWEI ibmc driver
+* Fix agent\_client handling of embedded errors
+* In-band deploy steps: correctly wipe driver\_internal\_info
+* Restore missing node.save() in agent\_base.py
+* Add link to other Redfish parms to iDRAC doc
+* Log when IPA fallback occurs on bootloader install
+* Delay validating deploy templates until we get all steps
+* Support executing in-band deploy steps
+* Upgrade flake8-import-order version to 0.17.1
+* Stop configuring install\_command in tox
+* Prepare release notes/docs for 15.0 release
+* Ironic 15.0 prelude
+* DRAC: Added redfish management interface issue
+* Fix SpanLength calculation for DRAC RAID configuration
+* Fix RAID configuration with idrac-wsman interface
+* Revert "Generalize ISO building for virtual media driver"
+* Add ironic 15.0 release mapping
+* Fixes unusable Guru meditation report
+* Don't use wsme test webapp for patch tests
+* Centralise imports of wsme types
+* Update iDRAC doc about soft power off timeout
+* Implement the bios-interface for idrac-wsman driver
+* Improve the command status checks in the agent's process\_next\_step
+* Change [deploy]/default\_boot\_option to local
+* Update iDRAC doc about vendor passthru timeout
+* Use trailing slash in the agent command URL
+* Fix missing print format in log messages
+* Extend timeout on CI job with automated cleaning
+* Fix issue where server fails to reboot
+* Add my new address to .mailmap
+* "dual stack" support for PXE/iPXE
+* Generalize ISO building for virtual media driver
+* Remove six minions
+* Increase VM RAM value in local.conf example
+* Release reservation when stoping the ironic-conductor service
+* Update jobs description
+* Change default ram value
+* Added node multitenancy doc
+* Support burning configdrive into boot ISO
+* [doc] Remove the device selection limitation for Software RAID
+* Add sushy-cli to client libraries release list
+* Fix AttributeError in check allowed port fields
+* Fix gunicorn name on Py3@CentOS7 in devstack
+* Add node lessee field
+* Software RAID: Pass the boot mode to the IPA
+* Refactor AgentBase.heartbeat and process\_next\_step
+* [doc] Images need some metadata for software RAID
+* Drop netaddr - use netutils.is\_valid\_ipv6()
+* Allow INSPECTWAIT state for lookup
+* Improve \`redfish\` set-boot-device behaviour
+* Improve \`redfish\` set-boot-mode implementation
+* Change multinode job to voting
+* Cleanup Python 2.7 support
+* Use auth values from neutron conf when managing Neutron ports
+* Fetch netmiko session log
+* Doc - IPv6 Provisioning
+* Additional IP addresses to IPv6 stateful ports
+* Add network\_type to port local\_link\_connection
+* Make oslo.i18n an optional dependency
+* Make oslo.reports an optional dependency
+* Do not autoescape all Jinja2 templates
+* Make deploy step failure logging indicate the error
+* Fix the remaining hacking issues
+* Bump hacking to 3.0.0
+* Extend install\_bootloader command timeout
+* Document deploy\_boot\_mode and boot\_option for standalone deployments
+* Remove future usage
+* Fix enabled\_hardware\_types from idrac-wsman to idrac
+* Document our policies for stable branches
+* Retry agent get\_command\_status upon failures
+* Add troubleshooting on IPMI section
+* Default IRONIC\_RAMDISK\_TYPE to dib
+* Generalize clean step functions to support deploy steps
+* Raise human-friendly messages on attempt to use pre-deploy steps drivers
+* Hash the rescue\_password
+* DRAC: Fix a failure to create virtual disk bug
+* [doc] Add documentation for retirement support
+* Add info on how to enable ironic-tempest-plugin
+* Follow-up releasenote use\_secrets
+* Add indicators REST API endpoints
+* Do not use random to generate token
+* Signal agent token is required
+* Support centos 7 rootwrap data directory
+* Refactoring: split out wrap\_ipv6
+* Refactoring: move iSCSI deploy code to iscsi\_deploy.py
+* Clean up nits from adding additional node update policies
+* Allow specifying target devices for software RAID
+* Documentation clarifications for software RAID
+* Drop rootwrap.d/ironic-lib.filters file
+* Expand user-image doc
+* Move ipmi logging to a separate option
+* Change readfp to read\_file
+* Make image\_checksum optional if other checksum is present
+* Remove compatibility with pre-deploy steps drivers
+* Extend power sync timeout for Ericsson SDI
+* Skip clean steps from 'fake' interfaces in the documentation
+* Rename ironic-tox-unit-with-driver-libs-python3
+* Send our token back to the agent
+* Enable agent\_token for virtual media boot
+* Add separate policies for updating node instance\_info and extra
+* Follow up to console port allocation
+* Change force\_raw\_images to use sha256 if md5 is selected
+* Make reservation checks caseless
+* [doc] Missing --name option
+* Bump minimum supported ansible version to 2.7
+* Set abstract for ironic-base
+* Refactoring: move generic agent clean step functions to agent\_base
+* Docs: split away user image building and highlight whole disk images
+* Redfish: Add root\_prefix to Sushy
+* Cleanup docs building
+* Rename \`create\_isolinux\_image\_for\_uefi\` function as misleading
+* Finalize removal of ipxe\_enabled option
+* Start removing ipxe support from the pxe interface
+* Pre-shared agent token
+* DRAC: Fix RAID create\_config clean step
+* Expose allocation owner to additional policy checks
+* Project Contributing updates for Goal
+* Refactoring: rename agent\_base\_vendor to agent\_base
+* Use FIPS-compatible SHA256 for comparing files
+* Revert "Move ironic-standalone to non-voting"
+* Move ironic-standalone to non-voting
+* Make \`redfish\_system\_id\` property optional
+* Lower tempest concurrency
+* Refactoring: finish splitting do\_node\_deploy
+
 14.0.0
 ------
 
 * Fix up release notes for 14.0.0
 * Actually use ironic-python-agent from source in source builds
 * Update release mappings for Ussuri
+* Automatic port allocation for the serial console
+* Remove the [pxe]ipxe\_enabled configuration option
 * tell reno to ignore the kilo branch
 * Update API version history for v1.61
+* [Trivial] Remove redundant brackets
 * Split cleaning-related functions from manager.py into a new module
 * Split deployment-related functions from manager.py into a new module
 * Disable debug output in doc building
+* Fix bash comparisons for grenade multinode switch
 * Fix jsonpatch related tests
 * Fix ipxe interface to perform ipxe boot without ipxe\_enabled enabled
 * Fix typo in setup-network.sh script
@@ -27,6 +163,7 @@ CHANGES
 * Deprecate ibmc
 * Fix incorrect ibmc\_address parsing on Python 3.8
 * Fix entry paths for cleaning and deployment
+* Nodes in maintenance didn't fail, when they should have
 * Fix API docs for target\_power\_state response
 * Document using CentOS 8 DIB IPA images for Ussuri and newer
 * Lower RAM for DIB jobs to 2 GiB
@@ -36,6 +173,7 @@ CHANGES
 * CI: make the metalsmith job voting and gating
 * devstack: install bindep for diskimage-builder
 * Allow reading root\_device from instance\_info
+* Implement managed in-band inspection boot for ilo-virtual-media
 * Add a missing versionadded for configdrive[vendor\_data]
 * Make qemu hook running with python3
 * Refactor glance retry code to use retrying lib

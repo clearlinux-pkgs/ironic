@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xC12B8E73B30F2FC8 (infra-root@openstack.org)
 #
 Name     : ironic
-Version  : 15.1.0
-Release  : 27
-URL      : https://tarballs.openstack.org/ironic/ironic-15.1.0.tar.gz
-Source0  : https://tarballs.openstack.org/ironic/ironic-15.1.0.tar.gz
-Source1  : https://tarballs.openstack.org/ironic/ironic-15.1.0.tar.gz.asc
+Version  : 15.2.0
+Release  : 28
+URL      : https://tarballs.openstack.org/ironic/ironic-15.2.0.tar.gz
+Source0  : https://tarballs.openstack.org/ironic/ironic-15.2.0.tar.gz
+Source1  : https://tarballs.openstack.org/ironic/ironic-15.2.0.tar.gz.asc
 Summary  : OpenStack Bare Metal Provisioning
 Group    : Development/Tools
 License  : Apache-2.0
@@ -20,7 +20,6 @@ Requires: ironic-python = %{version}-%{release}
 Requires: ironic-python3 = %{version}-%{release}
 Requires: Jinja2
 Requires: SQLAlchemy
-Requires: WSME
 Requires: WebOb
 Requires: alembic
 Requires: automaton
@@ -66,7 +65,6 @@ Requires: stevedore
 Requires: tooz
 BuildRequires : Jinja2
 BuildRequires : SQLAlchemy
-BuildRequires : WSME
 BuildRequires : WebOb
 BuildRequires : alembic
 BuildRequires : automaton
@@ -74,7 +72,6 @@ BuildRequires : buildreq-distutils3
 BuildRequires : eventlet
 BuildRequires : futurist
 BuildRequires : ironic-lib
-BuildRequires : ironic-lib-python
 BuildRequires : jsonpatch
 BuildRequires : jsonschema
 BuildRequires : keystoneauth1
@@ -115,6 +112,7 @@ BuildRequires : retrying
 BuildRequires : rfc3986
 BuildRequires : stevedore
 BuildRequires : tooz
+BuildRequires : tooz-python
 BuildRequires : tox
 BuildRequires : virtualenv
 
@@ -208,22 +206,21 @@ Requires: pypi(sqlalchemy)
 Requires: pypi(stevedore)
 Requires: pypi(tooz)
 Requires: pypi(webob)
-Requires: pypi(wsme)
 
 %description python3
 python3 components for the ironic package.
 
 
 %prep
-%setup -q -n ironic-15.1.0
-cd %{_builddir}/ironic-15.1.0
+%setup -q -n ironic-15.2.0
+cd %{_builddir}/ironic-15.2.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1594663108
+export SOURCE_DATE_EPOCH=1597855466
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -244,7 +241,7 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/ironic
-cp %{_builddir}/ironic-15.1.0/LICENSE %{buildroot}/usr/share/package-licenses/ironic/294b43b2cec9919063be1a3b49e8722648424779
+cp %{_builddir}/ironic-15.2.0/LICENSE %{buildroot}/usr/share/package-licenses/ironic/294b43b2cec9919063be1a3b49e8722648424779
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :

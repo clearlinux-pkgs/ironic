@@ -6,7 +6,7 @@
 #
 Name     : ironic
 Version  : 15.2.0
-Release  : 28
+Release  : 29
 URL      : https://tarballs.openstack.org/ironic/ironic-15.2.0.tar.gz
 Source0  : https://tarballs.openstack.org/ironic/ironic-15.2.0.tar.gz
 Source1  : https://tarballs.openstack.org/ironic/ironic-15.2.0.tar.gz.asc
